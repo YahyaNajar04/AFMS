@@ -32,7 +32,7 @@ Ensure you have the following installed on your system:
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/your-username/AFMS.git
+   git clone https://github.com/YahyaNajar04/AFMS.git
    cd AFMS
 
 2. Install dependencies
