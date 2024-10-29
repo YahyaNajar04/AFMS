@@ -12,9 +12,11 @@ export default function Home() {
 
       const checkUserAuth = async() => {
             const result = await asyncStorageServices.getData('login')
-            if(result !== null){
+            if(result !== 'true') {
+                  console.log("User not authenticated")
                   router.replace('/login')
             }
+
       }
       return (
             <View 

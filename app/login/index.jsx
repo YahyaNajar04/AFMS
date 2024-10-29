@@ -16,7 +16,8 @@ export default function LoginPage() {
             if (token) {
               // User was authenticated
               await asyncStorageServices.storeData('login', 'true');
-              router.replace('app/index.jsx')
+              router.replace('/');
+              console.log("Authenticated");
             }
           };
 

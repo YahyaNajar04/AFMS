@@ -4,7 +4,7 @@ const storeData = async (key, value) => {
       try {
         await AsyncStorage.setItem(key , value);
       } catch (e) {
-        // saving error
+        console.error("Error saving data", e);
       }
     };
 
@@ -15,7 +15,7 @@ const storeData = async (key, value) => {
           // value previously stored
         }
       } catch (e) {
-        // error reading value
+        console.error("Error reading data", e);
       }
     };
 
