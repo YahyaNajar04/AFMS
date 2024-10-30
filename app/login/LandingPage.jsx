@@ -17,7 +17,6 @@ export default function LoginPage() {
               // User was authenticated
               await asyncStorageServices.storeData('login', 'true');
               router.replace('/');
-              console.log("Authenticated");
             }
           };
 
