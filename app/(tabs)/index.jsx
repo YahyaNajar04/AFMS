@@ -7,6 +7,7 @@ import { supabase } from '../../components/supabaseConfig'
 import { TouchableOpacity } from 'react-native'
 import ICON from './../../assets/images/user.png'
 import colours from '../../components/colours'
+import  Header  from '../../components/navigation/header.jsx'
 
 export default function Home() {
 
@@ -20,38 +21,35 @@ export default function Home() {
       const checkUserAuth = async () => {
             const result = await asyncStorageServices.getData('login');
             if (result !== 'true') {
-                  router.replace('/login')
+                  router.replace('./../login/LandingPage')
             }
       }
-
-      const handleLogout = async () => {
-            const loggedOut = await client.logout();
-            if (loggedOut) {
-                  await asyncStorageServices.storeData('login', 'false');
-                  router.replace('/login');
-                  // User was logged out
-            }
-      };
 
       const getWallets = async () => {
             const user = await client.getUserDetails();
-            const { data, error } = await supabase.from('Wallets')
-                  .select('*')
-                  .eq('created_by', user.email)
-
-            console.log(data);
-      }
+            console.log("User details:", user); 
+          
+            const { data, error } = await supabase
+              .from('Wallets')
+              .select('*')
+              .eq('created_by', user.email);
+          
+            if (error) {
+              console.error("Error fetching wallets:", error);
+            } else {
+              console.log("data", data);
+            }
+          };
 
       return (
-            <View>
-                  <View>
-                        <TouchableOpacity onPress={() => router.push('/profile')}>
-                              <Image source={ICON} style={styles.profileStyle} />
-                        </TouchableOpacity>
-                  </View>
-                  <Text style={styles.Text}>Hello Expo</Text>
-                  <Button title="Logout" onPress={handleLogout}
-                  />
+            <View style = {{
+                  padding: 20,
+                  backgroundColor: colours.LIGHT_BLUE,
+                  height: 100
+            }}>
+                  
+                  <Header/>
+                  
             </View>
       )
 }
