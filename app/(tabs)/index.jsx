@@ -3,13 +3,15 @@ import React, { useEffect } from 'react'
 import { Link, useRouter } from 'expo-router'
 import asyncStorageServices from '../../components/asyncStorageServices'
 import { client } from '../../components/KindeConfig'
+import { supabase } from '../../components/supabaseConfig'
 
 export default function Home() {
 
       const router = useRouter();
 
       useEffect(() => {
-            checkUserAuth()
+            checkUserAuth();
+            getWallets();
       }, [])
 
       const checkUserAuth = async () => {
@@ -27,6 +29,15 @@ export default function Home() {
                   // User was logged out
             }
       };
+
+      const getWallets = async () => {
+            const user = await client.getUserDetails();
+            const {data, error} = await supabase.from('Wallets')
+            .select('*')
+            .eq('created_by', user.email)
+
+            console.log(data);
+      }
 
       return (
             <View>
