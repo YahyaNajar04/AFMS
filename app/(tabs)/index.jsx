@@ -8,7 +8,7 @@ import { TouchableOpacity } from 'react-native'
 import ICON from './../../assets/images/user.png'
 import colours from '../../components/colours'
 import Header from '../../components/navigation/header.jsx'
-import PieChart from 'react-native-pie-chart'
+import NativePieChart from '../../components/NativePieChart.jsx'
 
 export default function Home() {
 
@@ -59,30 +59,19 @@ export default function Home() {
             }
       };
 
-      const widthAndHeight = 250
-      const series = [123, 321, 123, 789, 537]
-      const sliceColor = ['#fbd203', '#ffb300', '#ff9100', '#ff6c00', '#ff3c00']
-
       return (
             <View style={{
                   padding: 20,
                   backgroundColor: colours.LIGHT_BLUE,
-                  height: 100
+                  height: 150
             }}>
                   <Header />
-
-                  <PieChart
-                        widthAndHeight={widthAndHeight}
-                        series={series}
-                        sliceColor={sliceColor}
-                        coverRadius={0.45}
-                        coverFill={'#FFF'}
-                  />
+                  
+                 <NativePieChart/>
 
             </View>
       )
 }
-
 
 const styles = StyleSheet.create({
       Text: {
