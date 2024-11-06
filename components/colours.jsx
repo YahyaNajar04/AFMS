@@ -12,6 +12,14 @@ export default {
       LIGHT_GRAY: '#F2F2F2',       // For background sections, containers
       
       // Accent Color
-      GOLDEN_YELLOW: '#F5B041'     // For highlights, important icons, notifications
+      GOLDEN_YELLOW: '#F5B041',   // For highlights, important icons, notifications
+
+      COLOUR_LIST: [ 
+        "#F5B041",
+        '#707070',
+        '#4A90E2',
+        '#2ECC71',
+        '#1A3D7C',
+      ],
     };
     
