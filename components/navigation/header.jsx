@@ -51,14 +51,16 @@ export default function Header() {
                               <Text style={{
                                     fontSize: 18,
                                     fontWeight: 'bold',
-                                    color: colours.BLACK
+                                    color: colours.BLACK,
+                                    fontFamily: 'sans-serif'
                               }}>
                                     Welcome, 
                               </Text>
                               <Text style={{
                                     fontSize: 20,
                                     color: colours.BLACK,
-                                    fontWeight: 'bold'
+                                    fontWeight: 'bold',
+                                    fontFamily: 'sans-serif'
                               }}>
                                     {user?.given_name} {user?.family_name}
                               </Text>

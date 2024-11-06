@@ -59,16 +59,17 @@ export default function Profile() {
           </TouchableOpacity>
         </View>
       </View>
-      <Image source={{ uri: user?.picture 
+      <Image source={{
+        uri: user?.picture
       }} style={styles.profile_Image}
       />
       <TouchableOpacity onPress={() => router.push('/editprofile')}>
-      <Text style={styles.Text}>
-      {user.given_name} {user.family_name}
-      <Ionicons name="pencil" size={18} color="black" />
-      </Text>
+        <Text style={styles.Text}>
+          {user?.given_name} {user?.family_name}
+          <Ionicons name="pencil" size={18} color="black" />
+        </Text>
       </TouchableOpacity>
-      
+
       <View>
 
       </View>
