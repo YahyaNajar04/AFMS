@@ -9,6 +9,8 @@ import ICON from './../../assets/images/user.png'
 import colours from '../../components/colours'
 import Header from '../../components/navigation/header.jsx'
 import NativePieChart from '../../components/NativePieChart.jsx'
+import SubscriptionList from '../../components/SubscriptionList.jsx'
+import WalletList from '../../components/WalletList.jsx'
 
 export default function Home() {
 
@@ -68,6 +70,11 @@ export default function Home() {
                   <Header />
                   
                  <NativePieChart/>
+
+                 <WalletList/>
+
+                  <SubscriptionList />
+                 
 
             </View>
       )

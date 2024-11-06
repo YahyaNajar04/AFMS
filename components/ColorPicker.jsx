@@ -3,7 +3,7 @@ import React from 'react'
 import colours from './colours'
 import { TouchableOpacity } from 'react-native'
 
-export default function ColorPicker(selectedColour, setSelectedColour) {
+export default function ColorPicker({selectedColour, setSelectedColour}) {
   return (
     <View style = {{
       display: 'flex',

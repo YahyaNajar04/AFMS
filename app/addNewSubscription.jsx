@@ -9,39 +9,46 @@ import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { TouchableOpacity } from 'react-native';
 import { supabase } from '../components/supabaseConfig';
 import { client } from '../components/KindeConfig';
-import { useRouter } from 'expo-router';
+import AntDesign from '@expo/vector-icons/AntDesign';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
-export default function AddNewWallet() {
+export default function addNewSubscription() {
 
   const [selectedIcon, setSelectedIcon] = useState('IC');
   const [selectedColour, setSelectedColour] = useState(colours.LIGHT_BLUE);
-  const [walletName, setWalletName] = useState();
-  const [balance, setBalance] = useState();
-  const router = useRouter();
+  const [subscriptionName, setSubscriptionName] = useState();
+  const [price, setPrice] = useState();
+  const [dueDate, setDueDate] = useState(new Date());
+  const [showDatePicker, setShowDatePicker] = useState(false);
 
-  const onCreateWallet = async() => {
+  const onCreateSubscription = async() => {
     const user = await client.getUserDetails();
-    const {data, error} = await supabase.from('Wallets').insert([
-      {name : walletName,
-      balance : balance,
+    const {data, error} = await supabase.from('Subscriptions').insert([
+      {name : subscriptionName,
+      price : price,
+      due_date : dueDate,
       icon : selectedIcon,
       color : selectedColour,
       created_by : user.email}
     ]).select();
 
-    console.log("Wallet created", data);
+    console.log("Subcription Created", data);
 
     if (data)
     {
-      ToastAndroid.show("Wallet created successfully", ToastAndroid.SHORT);
-      router.replace({
-        pathname: '/walletDetails',
-        params : {
-          walletId: data[0].id
-        }
-      })
+      ToastAndroid.show("Subscription created successfully", ToastAndroid.SHORT);
     }
-  }
+  };
+
+  const onChangeDueDate = (event, selectedDate) => {
+      const currentDate = selectedDate;
+      setShowDatePicker(false);
+      setDueDate(currentDate);
+  };
+
+  const showDatepicker = () => {
+      setShowDatePicker(true);
+  };
 
   return (
     <View style={{
@@ -73,27 +80,48 @@ export default function AddNewWallet() {
       <View style={styles.inputStyle}>
         <MaterialIcons name="label" size={24} color="black" />
         <TextInput
-          placeholder="Wallet Name"
-          onChangeText={(value) => setWalletName(value)}
+          placeholder="Subscription Name"
+          onChangeText={(value) => setSubscriptionName(value)}
           style={{ fontSize: 18, width: '100%' }}
           />
       </View>
       <View style={styles.inputStyle}>
       <FontAwesome6 name="money-bill-wave" size={24} color="black" />
         <TextInput
-          onChangeText={(value) => setBalance(value)}
-          placeholder="Balance"
+          onChangeText={(value) => setPrice(value)}
+          placeholder="Price"
           keyboardType='numeric'
           style={{ fontSize: 18, width: '100%' }}
           />
+      
       </View>
+
+      <View style={styles.inputStyle}>
+        <AntDesign name="calendar" size={24} color="black" />
+        <TouchableOpacity onPress={showDatepicker} style={{ width: '100%' }}>
+          <Text style={{ fontSize: 18 }}>
+            {dueDate.toLocaleDateString()} {/* Display dueDate in local format */}
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+      {showDatePicker && (
+        <DateTimePicker
+          testID="dateTimePicker"
+          value={dueDate}
+          mode="date" // You can change this to 'time' or 'datetime' if needed
+          is24Hour={true}
+          display="default"
+          onChange={onChangeDueDate}
+        />
+      )}
       
       <TouchableOpacity style={styles.button}
-        disabled={!walletName || !balance}
-        onPress = {() => onCreateWallet()}
+        disabled={!subscriptionName || !price || !dueDate}
+        onPress = {() => onCreateSubscription()}
       >
         <Text style={{ fontSize: 20, color: colours.WHITE }}>
-          Add Wallet
+          Add Subscription
         </Text>
       </TouchableOpacity>
 

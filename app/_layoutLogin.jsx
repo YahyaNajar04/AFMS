@@ -2,7 +2,6 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { Stack } from 'expo-router'
 import { useFonts } from 'expo-font';
-import { Modal } from 'react-native-web';
 
 export default function LayoutHome() {
 
