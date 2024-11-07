@@ -5,29 +5,29 @@ import { useLocalSearchParams, Link } from 'expo-router'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useState } from 'react';
 import { supabase } from './../components/supabaseConfig';
-import WalletInfo from './../components/Wallets/walletInfo';
+import SubsciptionsInfo from './../components/Subscriptions/subscriptionInfo';
 
-export default function walletDetails() {
+export default function subscriptionDetails() {
 
-      const { walletId } = useLocalSearchParams();
-      const [ currentWalletDetials, setcurrentWalletDetails] = useState([]);
+      const { subscriptionId } = useLocalSearchParams();
+      const [ currentSubcriptionDetials, setcurrentSubscriptionDetails] = useState([]);
 
       useEffect(() => {
-            console.log("Wallet Id:", walletId);
-            walletId && getWalletDetails();
-      }, [walletId])
+            console.log("Wallet Id:", subscriptionId);
+            subscriptionId && getSubscriptionDetails();
+      }, [subscriptionId])
 
-      const getWalletDetails = async () => {
+      const getSubscriptionDetails = async () => {
             const { data, error } = await supabase
-                  .from('Wallets')
-                  .select('*, Transactions(*)')
-                  .eq('id', walletId);
+                  .from('Subscriptions')
+                  .select('*')
+                  .eq('id', subscriptionId);
 
             if (error) {
                   console.error("Error fetching wallet details:", error);
             } else {
-                  console.log("Wallet details", data);
-                  setcurrentWalletDetails(data[0]);
+                  console.log("Subscription details", data);
+                  setcurrentSubscriptionDetails(data[0]);
             }
       }
 
@@ -36,10 +36,10 @@ export default function walletDetails() {
                   padding: 20,
                   marginTop: 20,
             }}>
-            <Link href="/Wallets">              
+            <Link href="/Subscriptions">              
             <Ionicons name="chevron-back-outline" size={34} color="black" />
             </Link>
-            <WalletInfo currentWalletDetails={currentWalletDetials}/>
+            <SubsciptionsInfo currentSubcriptionDetials = {currentSubcriptionDetials}/>
 
             </View>
       )

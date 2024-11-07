@@ -50,7 +50,7 @@ export default function Profile() {
         <View style={{
           width: 100,
           marginTop: 10,
-          marginLeft: 270,
+          marginLeft: "60%",
         }}>
           <TouchableOpacity onPress={handleLogout} >
 
