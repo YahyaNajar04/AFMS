@@ -12,7 +12,7 @@ export default function walletInfo({ currentSubscriptionDetails }) {
           <Text
             style = {styles.IconContainer}
           >
-            {currentSubscriptionDetails?.icon}
+            {currentSubscriptionDetails.icon}
           </Text>
         </View>
       </View>
