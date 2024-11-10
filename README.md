@@ -5,7 +5,7 @@ AFMS (All-in-One Financial Management System) is a comprehensive financial track
 ## Features
 
 - **Multi-Wallet Support**: Connect and manage multiple e-wallets for a unified view of your finances.
-- **Subscription Tracking**: Track all your active subscriptions and receive alerts for upcoming payments.
+e **Subscription Tracking**: Track all your active subscriptions and receive alerts for upcoming payments.
 - **Financial Analytics**: Get insights into your spending patterns and financial health.
 - **Secure Authentication**: Kinde integration ensures a secure and reliable user authentication system.
 - **Cloud-based Backend**: Data is stored and managed using Supabase, providing a reliable and scalable backend.
