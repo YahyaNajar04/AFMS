@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 
-export default function walletInfo({ currentSubscriptionDetails }) {
+export default function subscriptionInfo({ currentSubscriptionDetails }) {
 
       console.log("Current Subscription Details:", currentSubscriptionDetails);
 
