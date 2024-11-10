@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
-import { Tabs } from 'expo-router'
+import { Stack, Tabs } from 'expo-router'
 import { FontAwesome } from '@expo/vector-icons'
 import colours from '../../components/colours'
 import { TouchableOpacity } from 'react-native'
@@ -44,6 +44,8 @@ export default function TabLayout() {
         }}>
       </Tabs.Screen>
     </Tabs>
+
+    
   )
 }
 

@@ -39,7 +39,7 @@ export default function subscriptionDetails() {
             <Link href="/Subscriptions">              
             <Ionicons name="chevron-back-outline" size={34} color="black" />
             </Link>
-            <SubsciptionsInfo currentSubcriptionDetials = {currentSubcriptionDetials}/>
+            <SubsciptionsInfo currentSubscriptionDetails={currentSubcriptionDetials}/>
 
             </View>
       )
