@@ -6,6 +6,7 @@ import colours from '../colours';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useRouter } from 'expo-router';
 import { TouchableOpacity } from 'react-native';
+import HelloWave from './../HelloWave';
 
 export default function Header() {
 
@@ -63,7 +64,10 @@ export default function Header() {
                                     fontFamily: 'sans-serif'
                               }}>
                                     {user?.given_name} {user?.family_name}
+                                    <HelloWave/>
                               </Text>
+                              
+                              
 
                         </View>
                         <Ionicons name="notifications" size={24} color="black" />

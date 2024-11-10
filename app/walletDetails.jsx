@@ -14,7 +14,6 @@ export default function walletDetails() {
   const [currentWalletDetials, setcurrentWalletDetails] = useState([]);
 
   useEffect(() => {
-    console.log("Wallet Id:", walletId);
     walletId && getWalletDetails();
   }, [walletId]);
 
@@ -25,9 +24,9 @@ export default function walletDetails() {
       .eq("id", walletId);
 
     if (error) {
-      console.error("Error fetching wallet details:", error);
+      console.error("Error Fetching Wallet Details:", error.message);
+      return;
     } else {
-      console.log("Wallet details", data);
       setcurrentWalletDetails(data[0]);
     }
   };

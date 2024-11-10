@@ -17,12 +17,11 @@ export default function TransactionList({ currentWalletDetails }) {
     date.getMonth() + 1
   }/${date.getFullYear()}`;
   
-
+  
   const router = useRouter();
 
   const onDeleteTransaction = (transactionId) => {
 
-    console.log ("Transaction ID:", transactionId);
     Alert.alert(
       "Are you sure you want to delete this transaction?",
       "This action cannot be undone",
@@ -40,7 +39,7 @@ export default function TransactionList({ currentWalletDetails }) {
                 .from("Transactions")
                 .delete()
                 .eq("id", transactionId);
-  
+            
               if (error) {
                 console.error("Error Deleting Transaction:", error.message);
                 ToastAndroid.show("Error Deleting Transaction", ToastAndroid.SHORT);

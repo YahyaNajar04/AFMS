@@ -17,6 +17,10 @@ export default function WalletList({ walletList }) {
     })
   }
 
+  const calculateTotalExpenditure = (totalSpent) => {
+
+  }
+
   const sortedWalletList = walletList ? [...walletList].sort((a, b) => b.balance - a.balance) : [];
 
   return (
@@ -44,7 +48,7 @@ export default function WalletList({ walletList }) {
                 <Text style = {
                   styles.Transactions
                 }>
-                  RM {wallet.balance}
+                  RM ${calculateTotalExpenditure(wallet?.Transactions)}
                 </Text>
                 
               </View>
