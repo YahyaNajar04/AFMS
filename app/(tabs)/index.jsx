@@ -14,7 +14,6 @@ import WalletList from "../../components/WalletList.jsx";
 import { ScrollView } from "react-native";
 import { RefreshControl } from "react-native";
 import { useState } from "react";
-import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry.js";
 
 export default function Home() {
 

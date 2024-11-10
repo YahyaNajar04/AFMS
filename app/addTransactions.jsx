@@ -32,6 +32,12 @@ export default function addTransactions() {
   const router = useRouter();
   const [loader, setLoading] = useState(false);
 
+  
+  const {balance} = useLocalSearchParams();
+
+  const transactionAmount = parseFloat(amount);
+  const currentBalance = parseFloat(balance);
+
   const onImagePick = async () => {
     const { status } = await ImagePicker.requestCameraPermissionsAsync();
 
@@ -50,6 +56,13 @@ export default function addTransactions() {
 
   const onClickAdd = async () => {
     setLoading(true);
+
+    if (transactionAmount > currentBalance) {
+      ToastAndroid.show("Your balance is too low for this transaction", ToastAndroid.SHORT);
+      setLoading(false);
+      return;
+    }
+
     if (!image || image === placeholder) {
       console.warn("No image selected or using placeholder.");
     }
@@ -106,10 +119,6 @@ export default function addTransactions() {
     }
   };
 
-  const {balance} = useLocalSearchParams();
-  console.log("Balance:", balance);
-
-  
 
   const onChangeDate = (event, selectedDate) => {
     const currentDate = selectedDate;
