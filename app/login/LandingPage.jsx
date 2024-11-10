@@ -26,7 +26,6 @@ export default function LoginPage() {
         alignItems: "center",
       }}
     >
-      // TODO: add a label for profile
       <Image source={LOGO} style={styles.bgImage} />
       <View
         style={{
