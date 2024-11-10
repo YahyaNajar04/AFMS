@@ -58,6 +58,7 @@ export default function walletDetails() {
                  pathname : "/addTransactions",
                  params : {
                         walletId : walletId,
+                        balance : currentWalletDetials.balance
                   }
             }}
       >

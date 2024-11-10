@@ -4,10 +4,14 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import colours from "../colours";
 import { useState } from "react";
 
+
 export default function walletInfo({ currentWalletDetails }) {
   useEffect(() => {
     currentWalletDetails && totalPercentage();
   }, [currentWalletDetails]);
+
+
+  const [newBalance, setNewBalance] = useState(currentWalletDetails.balance);
 
   const [percentage, setPercentage] = useState();
   const [totalspent, setTotalspent] = useState();
@@ -22,6 +26,9 @@ export default function walletInfo({ currentWalletDetails }) {
 
     const remainingBalance = currentWalletDetails.balance - total;
     setRemainingBalance(remainingBalance);
+
+    const newWalletBalance = currentWalletDetails.balance - total;
+    setNewBalance(newWalletBalance);
 
 
     const percentage = (total / currentWalletDetails.balance) * 100;
@@ -52,18 +59,18 @@ export default function walletInfo({ currentWalletDetails }) {
           <Text style={styles.Transactions}>
             {currentWalletDetails.Transactions?.length} Transactions
           </Text>
-          <Text style = {{
-            fontSize : 15,
-            fontWeight : "bold",
+          <Text style={{
+            fontSize: 15,
+            fontWeight: "bold",
           }}>
-            RM {currentWalletDetails.balance}
+            RM {newBalance !== undefined ? newBalance.toFixed(2) : "0.00"}
           </Text>
         </View>
         <Ionicons name="trash" size={24} color="red" />
       </View>
       <View style={styles.balanceContainer}>
-        <Text>Spent : RM{totalspent}</Text>
-        <Text>Balance Remaining : RM{remainingBalance}</Text>
+        <Text>Spent : RM{totalspent !== undefined ? totalspent.toFixed(2) : "0.00"}</Text>
+        <Text>Balance Remaining : RM{remainingBalance !== undefined ? remainingBalance.toFixed(2) : "0.00"}</Text>
       </View>
       <View style={styles.budgetBar}>
         <View style={[styles.budgetBarContainer, { width: percentage }]}></View>
