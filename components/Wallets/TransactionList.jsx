@@ -3,6 +3,7 @@ import React from "react";
 import { Image } from "react-native";
 import colors from "../colours";
 import colours from "../colours";
+import { ScrollView } from "react-native";
 
 export default function TransactionList({ currentWalletDetails }) {
 
@@ -10,8 +11,11 @@ export default function TransactionList({ currentWalletDetails }) {
   const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
 
   return (
+    <ScrollView style = {{flex : 1}}>
+
+
     <View style={styles.container}>
-      <Text style={styles.heading}>Wallet Transactions</Text>
+      <Text style={[styles.heading]}>Wallet Transactions</Text>
       <View>
         {currentWalletDetails?.Transactions?.length > 0 ? ( // Check if Transactions array exists and has elements
           currentWalletDetails?.Transactions?.map((transaction, index) => (
@@ -63,6 +67,7 @@ export default function TransactionList({ currentWalletDetails }) {
         )}
       </View>
     </View>
+    </ScrollView>
   );
 }
 

@@ -17,12 +17,14 @@ export default function WalletList({ walletList }) {
     })
   }
 
+  const sortedWalletList = walletList ? [...walletList].sort((a, b) => b.balance - a.balance) : [];
+
   return (
     <View style={{ marginTop: 20 }}>
       <Text style={{ fontSize: 25, fontWeight: 'bold' }}>Wallets</Text>
       <View>
-        {walletList &&
-          walletList.map((wallet, index) => (
+        {sortedWalletList &&
+          sortedWalletList.map((wallet, index) => (
             <TouchableOpacity key={index} style={styles.addContainer}
               onPress = {() => onWalletPress(wallet)}
             >
@@ -44,6 +46,7 @@ export default function WalletList({ walletList }) {
                 }>
                   RM {wallet.balance}
                 </Text>
+                
               </View>
             </TouchableOpacity>
           ))}

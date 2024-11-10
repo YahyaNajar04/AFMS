@@ -105,6 +105,10 @@ export default function addTransactions() {
       console.error("Unexpected error:", error);
     }
   };
+
+  const {balance} = useLocalSearchParams();
+  console.log("Balance:", balance);
+
   
 
   const onChangeDate = (event, selectedDate) => {
