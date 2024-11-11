@@ -94,7 +94,7 @@ export default function Home() {
             padding : 20,
             marginTop : -80
           }}>
-            <NativePieChart />
+            <NativePieChart walletList = {walletList}/>
             <View>
             <WalletList walletList={walletList.slice(0,2)}/>
             </View>

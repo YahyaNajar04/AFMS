@@ -17,8 +17,16 @@ export default function WalletList({ walletList }) {
     })
   }
 
-  const calculateTotalExpenditure = (totalSpent) => {
+  const calculateTotalExpenditure = (totalAmount, Transactions) => {
+  let totalSpent = 0;
 
+  Transactions.forEach(transaction => {
+    totalSpent += transaction.amount;
+  })
+
+  const remainingBalance = totalAmount - totalSpent;
+
+  return remainingBalance;
   }
 
   const sortedWalletList = walletList ? [...walletList].sort((a, b) => b.balance - a.balance) : [];
@@ -48,7 +56,7 @@ export default function WalletList({ walletList }) {
                 <Text style = {
                   styles.Transactions
                 }>
-                  RM ${calculateTotalExpenditure(wallet?.Transactions)}
+                  RM {calculateTotalExpenditure(wallet.balance, wallet?.Transactions)}
                 </Text>
                 
               </View>
