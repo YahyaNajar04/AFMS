@@ -62,17 +62,20 @@ export default function walletInfo({ currentWalletDetails }) {
               .delete()
               .eq("wallet_id", currentWalletDetails.id);
 
-              await supabase
+            await supabase
               .from("Wallets")
               .delete()
               .eq("id", currentWalletDetails.id);
 
-              ToastAndroid.show("Wallet Deleted Successfully", ToastAndroid.SHORT);
-              router.replace("/(tabs)");
+            ToastAndroid.show(
+              "Wallet Deleted Successfully",
+              ToastAndroid.SHORT
+            );
+            router.replace("/(tabs)");
 
-              if (error) {
-                ToastAndroid.show("Error Deleting Wallet", ToastAndroid.SHORT);
-              }
+            if (error) {
+              ToastAndroid.show("Error Deleting Wallet", ToastAndroid.SHORT);
+            }
           },
         },
       ]
@@ -111,9 +114,26 @@ export default function walletInfo({ currentWalletDetails }) {
             RM {newBalance !== undefined ? newBalance.toFixed(2) : "0.00"}
           </Text>
         </View>
-        <TouchableOpacity onPress={() => onDeleteCategory()}>
-          <Ionicons name="trash" size={24} color="red" />
-        </TouchableOpacity>
+        <View>
+          <TouchableOpacity
+            style={{
+              marginBottom: 10,
+            }}
+            onPress={() =>
+              router.push({
+                pathname: '/editWallet',
+                params: {
+                  walletId: currentWalletDetails.id,
+                },
+              })
+            }
+          >
+            <Ionicons name="pencil" size={24} color="black" />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => onDeleteCategory()}>
+            <Ionicons name="trash" size={24} color="red" />
+          </TouchableOpacity>
+        </View>
       </View>
       <View style={styles.balanceContainer}>
         <Text>

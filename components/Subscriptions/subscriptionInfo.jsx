@@ -9,6 +9,8 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { supabase } from "../supabaseConfig";
 import { useRouter } from "expo-router";
+import { Alert } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function subscriptionInfo({ currentSubscriptionDetails }) {
 
@@ -73,6 +75,36 @@ export default function subscriptionInfo({ currentSubscriptionDetails }) {
     setShowDatePicker(true);
   };
 
+  const onDeleteSubscription = () => {
+    Alert.alert(
+      "Are you sure you want to delete this wallet?",
+      "This action cannot be undone",
+      [
+        {
+          text: "No",
+          style: "cancel",
+        },
+        {
+          text: "Yes",
+          style: "destructive",
+          onPress: async () => {
+            const { error } = await supabase
+              .from("Subscriptions")
+              .delete()
+              .eq("id", currentSubscriptionDetails.id);
+
+              ToastAndroid.show("Subscription Deleted Successfully", ToastAndroid.SHORT);
+              router.replace("/(tabs)");
+
+              if (error) {
+                ToastAndroid.show("Error Deleting Subscription", ToastAndroid.SHORT);
+              }
+          },
+        },
+      ]
+    );
+  };
+
   return (
     <View
       style={{
@@ -82,6 +114,7 @@ export default function subscriptionInfo({ currentSubscriptionDetails }) {
         height: "100%",
       }}
     >
+      
       <View style={{ justifyContent: "center", alignItems: "center" }}>
         <TextInput
           style={[styles.iconInput, { backgroundColor: selectedColour }]}
@@ -138,7 +171,7 @@ export default function subscriptionInfo({ currentSubscriptionDetails }) {
       )}
 
       <TouchableOpacity
-        style={styles.button}
+        style={styles.Addbutton}
         disabled={!subscriptionName || !price || !dueDate}
         onPress={onUpdateSubscription}
       >
@@ -146,6 +179,11 @@ export default function subscriptionInfo({ currentSubscriptionDetails }) {
           Update Subscription
         </Text>
       </TouchableOpacity>
+      <TouchableOpacity onPress={() => onDeleteSubscription()}
+        style = {styles.deleteButton}>
+          <Ionicons name="trash" size={24} color="white" />
+          <Text style = {styles.deleteButtonText}>Delete Subscription</Text>
+        </TouchableOpacity>
     </View>
   );
 }
@@ -172,11 +210,26 @@ const styles = StyleSheet.create({
     backgroundColor: colours.WHITE,
     alignItems: "center",
   },
-  button: {
+  Addbutton: {
     backgroundColor: colours.LIGHT_BLUE,
     padding: 10,
     borderRadius: 10,
-    marginTop: 30,
+    marginTop: 80,
     alignItems: "center",
+  },
+  deleteButton: {
+    flexDirection: 'row',
+    backgroundColor: '#B22222',
+    padding: 10,
+    borderRadius: 10,
+    alignItems: 'center', 
+    justifyContent: 'center', 
+    marginTop: 20,
+  },
+  deleteButtonText: {
+    fontSize: 20,
+    color: 'white',
+    marginLeft: 10, 
+    textAlign: 'center',
   },
 });

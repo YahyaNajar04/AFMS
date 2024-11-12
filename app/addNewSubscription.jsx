@@ -11,6 +11,7 @@ import { supabase } from '../components/supabaseConfig';
 import { client } from '../components/KindeConfig';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { useRouter } from 'expo-router';
 
 export default function addNewSubscription() {
 
@@ -20,6 +21,7 @@ export default function addNewSubscription() {
   const [price, setPrice] = useState();
   const [dueDate, setDueDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
+  const router = useRouter
 
   const onCreateSubscription = async() => {
     const user = await client.getUserDetails();
@@ -37,6 +39,7 @@ export default function addNewSubscription() {
     if (data)
     {
       ToastAndroid.show("Subscription created successfully", ToastAndroid.SHORT);
+      router.replace("/(tabs)")
     }
   };
 
