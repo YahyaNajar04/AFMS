@@ -120,8 +120,8 @@ export default function walletInfo({ currentWalletDetails }) {
               marginBottom: 10,
             }}
             onPress={() =>
-              router.push({
-                pathname: '/editWallet',
+              router.replace({
+                pathname: './editWallet',
                 params: {
                   walletId: currentWalletDetails.id,
                 },
