@@ -121,7 +121,7 @@ export default function walletInfo({ currentWalletDetails }) {
             }}
             onPress={() =>
               router.replace({
-                pathname: './editWallet',
+                pathname: './editWallets',
                 params: {
                   walletId: currentWalletDetails.id,
                 },
@@ -139,7 +139,7 @@ export default function walletInfo({ currentWalletDetails }) {
         <Text>
           Spent : RM{totalspent !== undefined ? totalspent.toFixed(2) : "0.00"}
         </Text>
-        <Text>
+        <Text>    
           Balance Remaining : RM
           {remainingBalance !== undefined
             ? remainingBalance.toFixed(2)

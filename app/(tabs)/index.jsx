@@ -1,11 +1,8 @@
 import { View, Text, StyleSheet, Button, Image } from "react-native";
 import React, { useEffect } from "react";
-import { useRouter } from "expo-router";
 import asyncStorageServices from "../../components/asyncStorageServices";
 import { client } from "../../components/KindeConfig";
 import { supabase } from "../../components/supabaseConfig";
-import { TouchableOpacity } from "react-native";
-import ICON from "./../../assets/images/user.png";
 import colours from "../../components/colours";
 import Header from "../../components/navigation/header.jsx";
 import NativePieChart from "../../components/NativePieChart.jsx";
@@ -14,6 +11,7 @@ import WalletList from "../../components/WalletList.jsx";
 import { ScrollView } from "react-native";
 import { RefreshControl } from "react-native";
 import { useState } from "react";
+import { useRouter } from "expo-router";
 
 export default function Home() {
 

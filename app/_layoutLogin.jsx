@@ -3,6 +3,10 @@ import React from "react";
 import { Stack } from "expo-router";
 import { useFonts } from "expo-font";
 import colours from "../components/colours";
+import addNewWallet from "../app/addNewWallet";
+import addNewSubscription from "../app/addNewSubscription";
+import addTransactions from "../app/addTransactions";
+import editWallets from "../app/editWallets";
 
 export default function LayoutHome() {
   const [loaded, error] = useFonts({
@@ -27,6 +31,7 @@ export default function LayoutHome() {
       </Stack.Screen>
       <Stack.Screen
         name="addNewWallet"
+        component = {addNewWallet}
         options={{
           title: "Add New Wallet",
           presentation: "modal",
@@ -38,6 +43,7 @@ export default function LayoutHome() {
       />
       <Stack.Screen 
         name = "addNewSubscription"
+        component = {addNewSubscription}
         options = {{
         title : "Add New Subscription",
         presentation : "modal",
@@ -46,6 +52,7 @@ export default function LayoutHome() {
         </Stack.Screen>
       <Stack.Screen
         name="addTransactions"
+        component={addTransactions}
         options={{
           title: "Add Transactions",
           presentation: "modal",
@@ -54,6 +61,15 @@ export default function LayoutHome() {
             backgroundColor: colours.WHITE,
           },
         }}
+      />
+      <Stack.Screen
+      name = "editWallets"
+      component = {editWallets}
+      options={{
+        title : "Edit Wallet",
+        presentation : "modal",
+        headerShown : true,
+      }}
       />
     </Stack>
   );
