@@ -22,7 +22,6 @@ export default function subscriptionInfo({ currentSubscriptionDetails }) {
   const [dueDate, setDueDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
 
-  // Use useEffect to set initial values from currentSubscriptionDetails
   useEffect(() => {
     if (currentSubscriptionDetails) {
       setSelectedIcon(currentSubscriptionDetails.icon || "IC");
@@ -37,7 +36,7 @@ export default function subscriptionInfo({ currentSubscriptionDetails }) {
     }
   }, [currentSubscriptionDetails]);
 
-  // Function to update the subscription
+
   const onUpdateSubscription = async () => {
     const { id } = currentSubscriptionDetails;
     const { data, error } = await supabase

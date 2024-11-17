@@ -7,8 +7,6 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import { supabase } from "../components/supabaseConfig";
 import { useRouter, useLocalSearchParams } from "expo-router";
-import { Alert } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 
 export default function EditWallet() {
   const router = useRouter();
@@ -68,38 +66,6 @@ export default function EditWallet() {
       console.error("Error updating wallet:", error);
       ToastAndroid.show("Failed to update wallet", ToastAndroid.SHORT);
     }
-  };
-
-  // Function to delete the wallet
-  const onDeleteWallet = () => {
-    Alert.alert(
-      "Are you sure you want to delete this wallet?",
-      "This action cannot be undone",
-      [
-        {
-          text: "No",
-          style: "cancel",
-        },
-        {
-          text: "Yes",
-          style: "destructive",
-          onPress: async () => {
-            const { error } = await supabase
-              .from("Wallets")
-              .delete()
-              .eq("id", walletDetails.id);
-
-            if (error) {
-              ToastAndroid.show("Error Deleting Wallet", ToastAndroid.SHORT);
-              return;
-            }
-
-            ToastAndroid.show("Wallet Deleted Successfully", ToastAndroid.SHORT);
-            router.replace("/(tabs)");
-          },
-        },
-      ]
-    );
   };
 
   return (
@@ -183,14 +149,5 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 40,
     alignItems: "center",
-  },
-  deleteButton: {
-    flexDirection: "row",
-    backgroundColor: '#B22222',
-    padding: 10,
-    borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 20,
   },
 });

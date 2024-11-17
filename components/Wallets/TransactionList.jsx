@@ -2,7 +2,6 @@ import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import { Image } from "react-native";
 import colors from "../colours";
-import colours from "../colours";
 import { ScrollView } from "react-native";
 import { TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
