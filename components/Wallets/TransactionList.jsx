@@ -75,7 +75,7 @@ export default function TransactionList({ currentWalletDetails }) {
                       {transaction.name}
                     </Text>
                     <Text style={{ fontSize: 15, fontWeight: "medium" }}>
-                      {transaction.date}
+                      {transaction.formattedDate}
                     </Text>
                     <Text style={{ color: colors.SLATE_GRAY }}>
                       Note : {transaction.note}

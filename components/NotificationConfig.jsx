@@ -2,12 +2,15 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import * as Notifications from 'expo-notifications'
 
-Notification.setNotificationHandler({
-
+Notifications.setNotificationHandler({
+      handleNotification: async () => ({
+      shouldShowAlert: true,
+      shouldPlaySound: true,
+      shouldSetBadge: false,
+      }),
 })
 
 export default function NotificationConfig() {
-
 
       return (
     <View>

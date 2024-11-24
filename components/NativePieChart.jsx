@@ -11,8 +11,28 @@ export default function NativePieChart({ walletList }) {
 
   const [values, setValues] = useState([1]);
   const [sliceColor, setSliceColor] = useState([colours.SLATE_GRAY]);
+  const [totalSpent, setTotalSpent] = useState(0);
 
- 
+  useEffect(() => {
+    updatePieChart();
+  }, [walletList]);
+
+  const updatePieChart = () => {
+    let newTotalSpent = 0;
+    setSliceColor([]);
+    setValues([]);
+
+    walletList.forEach((wallet, index) => {
+      let totalTransactionAmount = 0;
+      wallet.Transactions?.forEach((transaction) => {
+        totalTransactionAmount += transaction.amount;
+        newTotalSpent += transaction.amount;
+      })
+      setSliceColor(sliceColor => [...sliceColor, colours.COLOUR_LIST[index]]);
+      setValues(values => [...values, totalTransactionAmount])
+      setTotalSpent(newTotalSpent);
+    })
+  }
 
   return (
     <View style={styles.container}>
@@ -23,7 +43,7 @@ export default function NativePieChart({ walletList }) {
           color: colours.BLACK,
         }}
       >
-        Total Balance: <Text style={{ fontWeight: "bold" }}>RM0</Text>
+        Total Balance: <Text style={{ fontWeight: "bold" }}>RM {totalSpent}</Text>
       </Text>
       <View style={styles.subContainer}>
         <PieChart
@@ -34,7 +54,7 @@ export default function NativePieChart({ walletList }) {
           coverFill={"#FFF"}
         />
         
-          <View style={styles.walletList}>
+        {walletList.length == 0?  <View style={styles.walletList}>
             <MaterialCommunityIcons
               name="checkbox-blank-circle"
               size={24}
@@ -42,7 +62,19 @@ export default function NativePieChart({ walletList }) {
             />
             <Text>NA</Text>
           </View>
-        
+        :  <View>
+          {walletList.map((wallet, index) => (
+            <View key = {index} style={styles.walletList}>
+              <MaterialCommunityIcons
+              name="checkbox-blank-circle"
+              size={24}
+              color={colours.COLOUR_LIST[index]}
+            />
+            <Text>{wallet.name}</Text>
+
+            </View>
+          ))}
+          </View> }
       </View>
     </View>
   );

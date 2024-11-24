@@ -104,6 +104,19 @@ export default function EditWallet() {
           style={{ fontSize: 18, width: "100%" }}
         />
       </View>
+      <View>
+            <TouchableOpacity>
+                  
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+
+            </TouchableOpacity>
+      </View>
 
       <TouchableOpacity
         style={styles.updateButton}
@@ -150,4 +163,11 @@ const styles = StyleSheet.create({
     marginTop: 40,
     alignItems: "center",
   },
+  addMoneyButton: {
+      backgroundColor: colours.LIGHT_BLUE,
+      padding: 10,
+      borderRadius: 10,
+      marginTop: 20,
+      alignItems: "center",
+      },  
 });

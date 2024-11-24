@@ -63,7 +63,7 @@ export default function Wallets() {
             padding: 20,
             marginTop: -130
           }}>
-          <NativePieChart walletList = {walletList}/>
+            {/* <NativePieChart walletList = {walletList}/> */}
           <WalletList walletList={walletList} />
 
           </View>

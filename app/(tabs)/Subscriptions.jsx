@@ -1,12 +1,8 @@
 import { View, Text, StyleSheet, Image } from "react-native";
 import React from "react";
-import ICON from "./../../assets/images/user.png";
 import colours from "../../components/colours";
-import { TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import NativePieChart from "../../components/NativePieChart";
 import { Link, useRouter } from "expo-router";
-import Header from "../../components/navigation/header.jsx";
 import SubscriptionList from "../../components/SubscriptionList.jsx";
 import { useEffect } from "react";
 import { client } from "../../components/KindeConfig";
@@ -14,6 +10,7 @@ import { supabase } from "../../components/supabaseConfig";
 import { ScrollView } from "react-native";
 import { RefreshControl } from "react-native";
 import { useState } from "react";
+
 
 export default function Subscriptions() {
   const router = useRouter();
@@ -83,7 +80,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "blue",
     borderRadius: 100,
-    //backgroundColor: colours.WHITE,
     padding: 20,
     width: 50,
     height: 50,

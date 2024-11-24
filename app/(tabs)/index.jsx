@@ -82,7 +82,7 @@ export default function Home() {
             style={{
               padding: 20,
               backgroundColor: colours.LIGHT_BLUE,
-              height: 150,
+              height: 100,
             }}
           >
             <Header />
@@ -90,9 +90,10 @@ export default function Home() {
 
           <View style = {{
             padding : 20,
-            marginTop : -80
+            marginTop : -30
           }}>
-            <NativePieChart walletList = {walletList}/>
+            {/*<NativePieChart walletList = {walletList}/>*/}
+            
             <View>
             <WalletList walletList={walletList.slice(0,2)}/>
             </View>
