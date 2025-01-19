@@ -64,26 +64,25 @@ export default function Profile() {
           </TouchableOpacity>
         </View>
       </View>
-      <View style = {{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        backgroundColor: colours.LIGHT_BLUE,
-        height: 250,
-        padding: 20,
-      }}>
+      <View
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          backgroundColor: colours.LIGHT_BLUE,
+          height: 250,
+          padding: 20,
+        }}
+      >
         <Image
           source={{
             uri: user?.picture,
           }}
           style={styles.profile_Image}
         />
-        <TouchableOpacity onPress={() => router.push("/editprofile")}>
-          <Text style={styles.Text}>
-            {user?.given_name} {user?.family_name}
-            <Ionicons name="pencil" size={18} color="black" />
-          </Text>
-        </TouchableOpacity>
+        <Text style={styles.Text}>
+          {user?.given_name} {user?.family_name}
+        </Text>
       </View>
       <View>
         <Text style={styles.Text}>Help & Support</Text>

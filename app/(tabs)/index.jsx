@@ -5,13 +5,13 @@ import { client } from "../../components/KindeConfig";
 import { supabase } from "../../components/supabaseConfig";
 import colours from "../../components/colours";
 import Header from "../../components/navigation/header.jsx";
-import NativePieChart from "../../components/NativePieChart.jsx";
 import SubscriptionList from "../../components/SubscriptionList.jsx";
 import WalletList from "../../components/WalletList.jsx";
 import { ScrollView } from "react-native";
 import { RefreshControl } from "react-native";
 import { useState } from "react";
 import { useRouter } from "expo-router";
+import NativePieChart from "../../components/NativePieChart.jsx";
 
 export default function Home() {
 
@@ -92,7 +92,7 @@ export default function Home() {
             padding : 20,
             marginTop : -30
           }}>
-            {/*<NativePieChart walletList = {walletList}/>*/}
+            
             
             <View>
             <WalletList walletList={walletList.slice(0,2)}/>
